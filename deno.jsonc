@@ -1,0 +1,21 @@
+{
+  "tasks": {
+    "ci": "deno task lint && deno task fmt:check && deno task build",
+    "serve": "deno run --allow-net --allow-read --allow-env --allow-sys --watch app/mod.ts serve",
+    "build": "deno run --allow-net --allow-read --allow-env --allow-sys --allow-write=.pages app/mod.ts build",
+    "lint": "deno lint",
+    "fmt": "deno task fmt:ts && deno task fmt:css",
+    "fmt:check": "deno task fmt:ts:check && deno task fmt:css:check",
+    "fmt:ts": "deno fmt",
+    "fmt:ts:check": "deno fmt --check",
+    "fmt:css": "deno run --allow-read --allow-env --allow-sys --allow-write=styles jsr:@libs/bundle/css/cli/fmt styles/**/*.css",
+    "fmt:css:check": "deno run --allow-read --allow-env --allow-sys --allow-write=styles jsr:@libs/bundle/css/cli/fmt --check styles/**/*.css"
+  },
+  "fmt": {
+    "semiColons": false,
+    "lineWidth": 200,
+    "exclude": [
+      "coverage"
+    ]
+  }
+}
